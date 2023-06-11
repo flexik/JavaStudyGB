@@ -8,19 +8,22 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         //1. Выбросить случайное целое число в диапазоне от 0 до 2000 и сохранить в i
-        int i = getInt(2000);
+        int i = getInt();
+        System.out.printf("Рандомное число: " + i + "\n");
         //2. Посчитать и сохранить в n номер старшего значащего бита выпавшего числа
         int n = bit(i);
+        System.out.printf("Номер старшего значащего бита числа: " + n + "\n" + "\n");
         //3. Найти все кратные n числа в диапазоне от i до Short.MAX_VALUE сохранить в массив m1
         int[] m1 = multiples(i, n);
+        System.out.println(Arrays.toString(m1) + "\n");
         //4. Найти все некратные n числа в диапазоне от Short.MIN_VALUE до i и сохранить в массив m2
         int[] m2 = notMultiples(i, n);
+        System.out.println(Arrays.toString(m2));
     }
 
-    private static int getInt(int inputNumber) {    // 1. Метод "выбрасывания" случайного целого числа в диапазоне от 0 до заданного числа
-        int randomNumber = new Random().nextInt(inputNumber);
-        System.out.println(randomNumber);
-        return randomNumber;
+    private static int getInt() {    // 1. Метод "выбрасывания" случайного целого числа в диапазоне от 0 до заданного числа
+        int max = 2000;
+        return new Random().nextInt(max);
     }
 
     private static int bit(int x) {    // 2. Метод подсчета номера старшего значащего бита выпавшего числа
@@ -30,7 +33,6 @@ public class Main {
         if (x >= maxBit << 4) maxBit <<= 4;
         if (x >= maxBit << 2) maxBit <<= 2;
         if (x >= maxBit << 1) maxBit <<= 1;
-        System.out.println(maxBit);
         return maxBit;
     }
 
@@ -46,7 +48,6 @@ public class Main {
             }
             i++;
         }
-        System.out.println(Arrays.toString(array));
         return array;
     }
 
@@ -64,7 +65,6 @@ public class Main {
             }
             k++;
         }
-        System.out.println(Arrays.toString(array));
         return array;
     }
 }
